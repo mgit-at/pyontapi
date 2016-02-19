@@ -287,8 +287,15 @@ class NaField(object):
             return value == 'true'
         if self.encrypted:
             raise NotImplementedError('encryption is not supported yet')
-        return self.var_type(value)
 
+        # uws: 16.03.2015
+        # Error: Handling the API call of the CMode command snapmirror.update
+        # Returns '' instead of an 'int' 
+        # we return None then
+        try:
+            return self.var_type(value)
+        except:
+            return None
 
 class NaNamedType(object):
     """Class for complex ONTAPI types."""
