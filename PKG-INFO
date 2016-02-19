@@ -1,0 +1,24 @@
+Metadata-Version: 1.1
+Name: Pyontapi
+Version: 0.3.1
+Summary: Python NetApp ONTAPI Implementation
+Home-page: http://pyontapi.schaefer-tobies.de
+Author: Markus Grimm, Uwe W. Schäfer
+Author-email: mgr@schaefer-tobies.de
+License: LGPL
+Download-URL: http://pyontapi.schaefer-tobies.de/dist/0.3.1/Pyontapi-0.3.1.tar.gz
+Description: Pyontapi is a Python implementation for the NetApp ONTAP API. It automatically generates Python methods according to the ONTAPI version of your NetApp filer using the system-api-* API commands.
+Platform: POSIX
+Platform: Windows
+Classifier: Programming Language :: Python :: 2
+Classifier: Programming Language :: Python :: 2.4
+Classifier: Programming Language :: Python :: 2.5
+Classifier: Programming Language :: Python :: 2.6
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.0
+Classifier: Programming Language :: Python :: 3.1
+Classifier: Programming Language :: Python :: 3.2
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft
+Classifier: Operating System :: MacOS

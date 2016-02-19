@@ -1,0 +1,107 @@
+=================
+PYONTAPI CHANELOG
+=================
+
+Version 0.3.1
+=============
+
+ * Compability Fixes for Python 2.4
+ * Added a fix reported by Franz Zieher
+ * Updated error numbers based on NetApp Manegability SDK 5.3
+
+Version 0.3.0
+=============
+
+ * Possibility to add a Command_List for a special user; Without this feature
+   a restricted user generates a lot of warning messages at the filer console
+
+Version 0.2.11
+==============
+
+ * Version fix
+
+Version 0.2.10
+==============
+
+ * HTTP CA Auth added (experimental)!
+ * API Commands now throw exceptions if *args are provided.
+ * schtob module uses extend_path functionality.
+
+Version 0.2.9
+=============
+
+ * Bugfix: HTTPS port error fixed.
+
+Version 0.2.8
+=============
+
+ * Added some http response codes as response code 507 is not part of pythons
+   httplib.
+
+Version 0.2.7
+=============
+
+ * Bugfix: The controller-device-path-port info is told to be an integer in the
+   docs but returns a string. We skip conversion to integer on ValueError to
+   avoid this problem.
+
+Version 0.2.6
+=============
+
+ * Updated and fixed documentation
+
+Version 0.2.5
+=============
+
+ * Bugfix for KeyError in httplib.responses
+
+ * Added filer.call(...) method
+
+Version 0.2.4
+=============
+
+ * moved doc strings into doc/api.rst for some classes
+
+ * changed header of source files
+
+Version 0.2.3
+=============
+
+ * minor changes in api.py
+
+ * Bugfix in pyontapi_list_commands.py: The command now uses the new settings
+   file structure.
+
+ * Copyright adjusted to 2012
+
+Version 0.2.2
+=============
+
+ * Role based connections: You are now able to define roles for your filers.
+   Note: You need to update your NA_CONFIG settings dict as explained in the
+   documentation.
+
+Version 0.2.1
+=============
+
+ * Pyontapi now supports the new NetApp cluster mode.
+
+ * Pyontapi is now ready for Python > 3. Therefor, the unicode support of
+   Pyontapi for Python < 3.0 was dropped. Thus, all attributes and fields
+   which contain only text are of type str (for both, Python 3 and 2).
+
+ * Pyontapi nomore generates python code since this resulted in a blow-up of
+   the api/ subfolder. Pyontapi now creates all methods for API commands
+   at startup. The API commands can be invoked the usual way:
+
+   >>> from schtob.pyontapi import NaFiler
+   >>> result = filer.snapshot.list_info(volume='vol0')
+
+   The only difference is that the API commands (like list_info) only accept
+   keyword arguments. Default values will be handled internally.
+
+   >>> def list_info(**kwargs):
+       ...
+
+ * The pyontapi_setup.py command was removed. Configuration should be done
+   manually.
