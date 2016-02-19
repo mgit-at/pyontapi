@@ -13,19 +13,34 @@
 
 import os
 import sys
+import logging
+logging.basicConfig()
 
 
-def main():
-    """List packages and commands."""
-    filer_name = raw_input('Filer: ')
-    if not filer_name:
-        sys.exit(0)
-    role = raw_input('Role [Default=default]:') or 'default'
+def main(args):
+    """List packages and commands.
 
-    print('listing packages on "%s" using role "%s"...' % (filer_name, role))
+    :param args Commandline arguments minus program name
+
+    Example:
+    ./pyontapi_list_commands.py FILER-HOSTNAME USER port=80 vfiler=VFILER-NAME
+    """
+    pw = os.environ.get('PW')
+
+    filer_name = args[0]
+    user = args[1]
+
+    cfg = {"user": user}
+    cfg.update([ i.split('=',1) for i in args[2:]])
+    if pw == None:
+        cfg.pop("password") # password should NEVER be on the commandline as it can be seen system wide!
+    else:
+        cfg["password"] = pw
+
+    print('listing packages on "%s" using role "%s" with password:%s' % (filer_name, user, pw != None))
 
     try:
-        filer = Filers.get_connection(filer_name, role)
+        filer = NaFiler(filer_name, cfg)
         result = filer.call('system-api-list')
     except errors.APIFailure, exc:
         print(exc)
@@ -83,10 +98,10 @@ def setup_path():
 
 if __name__ == '__main__':
     setup_path()
-    from schtob.pyontapi import Filers, errors
+    from schtob.pyontapi import NaFiler, errors
 
     try:
-        main()
+        main(sys.argv[1:])
     except KeyboardInterrupt:
         print('')
     except EOFError:
