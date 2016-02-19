@@ -98,10 +98,10 @@ class NaFiler(object):
             result = self.__get_ontapi_version()
         except errors.APIFailure:
             exc = sys.exc_info()[1]
-            self._log.error("Cant't get ontapi version. error was: %s",
+            self._log.error("Can't get ontapi version. error was: %s",
                             exc.get_error())
             raise errors.UnknownOntapiVersionError(
-                exc.errno, "Cant't get ontapi version. error was:\n%s" %
+                exc.errno, "Can't get ontapi version. error was:\n%s" %
                 exc.reason)
 
         self._settings['ontapi_version'] = \

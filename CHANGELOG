@@ -2,6 +2,11 @@
 PYONTAPI CHANELOG
 =================
 
+Version 0.3.2
+=============
+
+ * Handling the API call of the CMode command snapmirror.update
+
 Version 0.3.1
 =============
 

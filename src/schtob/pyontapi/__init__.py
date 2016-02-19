@@ -11,7 +11,7 @@
     :license: LGPL, see LICENSE for details.
 """
 
-VERSION = '0.3.1'
+VERSION = '0.3.2'
 
 from schtob.pyontapi.na_connection import Filers
 from schtob.pyontapi.na_filer import NaFiler
